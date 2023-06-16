@@ -11,5 +11,7 @@ namespace MaizeRestuarant.DataAccess.Data
 
         }
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<FoodType> FoodType{ get; set; }
     }
 }
