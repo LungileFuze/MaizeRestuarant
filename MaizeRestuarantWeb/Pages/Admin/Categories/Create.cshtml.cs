@@ -3,34 +3,38 @@ using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MaizeRestuarantWeb.Pages.Categories
+namespace MaizeRestuarantWeb.Pages.Admin.Categories
 {
     [BindProperties]
-    public class DeleteModel : PageModel
+    public class CreateModel : PageModel
     {
         private readonly MaizeRestuarantDbContext _context;
         public Category Category { get; set; }
-        public DeleteModel(MaizeRestuarantDbContext maizeContext)
+        public CreateModel(MaizeRestuarantDbContext maizeContext)
         {
             _context = maizeContext;
         }
         
-        public void OnGet(int id)
+        public void OnGet()
         {
-            Category = _context.Categories.FirstOrDefault(c => c.Id == id);
+            
         }
 
         public async Task<IActionResult> OnPost()
         {
-            var categoryFromDB = _context.Categories.Find(Category.Id); 
-            if (categoryFromDB != null) 
+            if(Category.Name == Category.DisplayOrder.ToString())
             {
-                _context.Remove(categoryFromDB);
+                ModelState.AddModelError("Category.Name", "The DisplayOrder cannot exactly match the Name.");
+            }
+            if(ModelState.IsValid)
+            {
+                await _context.AddAsync(Category);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Category deleted successfully";
+                TempData["success"] = "Category added successfully";
                 return RedirectToPage("Index");
             }
             return Page();
+         
         }
     }
 }

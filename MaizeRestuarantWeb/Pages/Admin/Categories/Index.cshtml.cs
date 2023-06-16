@@ -3,7 +3,7 @@ using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MaizeRestuarantWeb.Pages.Categories
+namespace MaizeRestuarantWeb.Pages.Admin.Categories
 {
     public class IndexModel : PageModel
     {

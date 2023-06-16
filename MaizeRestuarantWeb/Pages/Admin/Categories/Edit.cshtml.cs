@@ -3,21 +3,21 @@ using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MaizeRestuarantWeb.Pages.Categories
+namespace MaizeRestuarantWeb.Pages.Admin.Categories
 {
     [BindProperties]
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly MaizeRestuarantDbContext _context;
         public Category Category { get; set; }
-        public CreateModel(MaizeRestuarantDbContext maizeContext)
+        public EditModel(MaizeRestuarantDbContext maizeContext)
         {
             _context = maizeContext;
         }
         
-        public void OnGet()
+        public void OnGet(int id)
         {
-            
+            Category = _context.Categories.FirstOrDefault(c => c.Id == id);
         }
 
         public async Task<IActionResult> OnPost()
@@ -28,9 +28,9 @@ namespace MaizeRestuarantWeb.Pages.Categories
             }
             if(ModelState.IsValid)
             {
-                await _context.AddAsync(Category);
+                _context.Update(Category);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Category added successfully";
+                TempData["success"] = "Category updated successfully";
                 return RedirectToPage("Index");
             }
             return Page();

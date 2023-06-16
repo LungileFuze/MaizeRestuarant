@@ -3,14 +3,14 @@ using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MaizeRestuarantWeb.Pages.Categories
+namespace MaizeRestuarantWeb.Pages.Admin.Categories
 {
     [BindProperties]
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly MaizeRestuarantDbContext _context;
         public Category Category { get; set; }
-        public EditModel(MaizeRestuarantDbContext maizeContext)
+        public DeleteModel(MaizeRestuarantDbContext maizeContext)
         {
             _context = maizeContext;
         }
@@ -22,19 +22,15 @@ namespace MaizeRestuarantWeb.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            if(Category.Name == Category.DisplayOrder.ToString())
+            var categoryFromDB = _context.Categories.Find(Category.Id); 
+            if (categoryFromDB != null) 
             {
-                ModelState.AddModelError("Category.Name", "The DisplayOrder cannot exactly match the Name.");
-            }
-            if(ModelState.IsValid)
-            {
-                _context.Update(Category);
+                _context.Remove(categoryFromDB);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Category updated successfully";
+                TempData["success"] = "Category deleted successfully";
                 return RedirectToPage("Index");
             }
             return Page();
-         
         }
     }
 }

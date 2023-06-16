@@ -20,4 +20,8 @@
     <ProjectReference Include="..\MaizeRestuarant.Models\MaizeRestuarant.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Customer\" />
+  </ItemGroup>
+
 </Project>
