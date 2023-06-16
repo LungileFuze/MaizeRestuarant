@@ -25,9 +25,10 @@
                             <a class="nav-link " asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Admin</a>
-                            <div class="dropdown-menu show" data-bs-popper="static">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                            <div class="dropdown-menu" data-bs-popper="static">
                                 <a class="dropdown-item" asp-area="" asp-page="/Admin/Categories/Index">Categories</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Admin/FoodTypes/Index">Food Type</a>
                                 <div class="dropdown-divider"></div>
                                 @*<a class="dropdown-item" href="#">Separated link</a>*@
                             </div>

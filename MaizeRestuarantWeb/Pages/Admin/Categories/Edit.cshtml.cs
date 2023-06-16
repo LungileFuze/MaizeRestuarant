@@ -22,11 +22,11 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            if(Category.Name == Category.DisplayOrder.ToString())
+            if (Category.Name == Category.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("Category.Name", "The DisplayOrder cannot exactly match the Name.");
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Update(Category);
                 await _context.SaveChangesAsync();
