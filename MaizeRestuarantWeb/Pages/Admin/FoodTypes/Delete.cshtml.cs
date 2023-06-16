@@ -32,6 +32,6 @@ namespace MaizeRestuarantWeb.Pages.Admin.FoodTypes
             }
             return Page();
         }
+        }
     }
-}
 
