@@ -1,9 +1,8 @@
-﻿
-using MaizeRestuarant.Models;
+﻿using MaizeRestuarant.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace MaizeRestuarantWeb.Model
+namespace MaizeRestuarant.DataAccess.Data
 {
     public class MaizeRestuarantDbContext : DbContext
     {

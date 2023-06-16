@@ -1,5 +1,5 @@
 
-using MaizeRestuarantWeb.Model;
+using MaizeRestuarant.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 

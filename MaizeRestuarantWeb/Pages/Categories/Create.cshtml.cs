@@ -1,5 +1,5 @@
+using MaizeRestuarant.DataAccess.Data;
 using MaizeRestuarant.Models;
-using MaizeRestuarantWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
