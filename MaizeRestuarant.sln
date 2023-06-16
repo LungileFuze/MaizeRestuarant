@@ -5,6 +5,12 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaizeRestuarantWeb", "MaizeRestuarantWeb\MaizeRestuarantWeb.csproj", "{75FD72EC-7A0A-4BCA-8C7D-3C12EFF2C532}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaizeRestuarant.DataAccess", "MaizeRestuarant.DataAccess\MaizeRestuarant.DataAccess.csproj", "{DA4EB2AD-2005-4C68-8711-C691D9631417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaizeRestuarant.Models", "MaizeRestuarant.Models\MaizeRestuarant.Models.csproj", "{B817A689-D941-48BB-8958-E39643D66C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaizeRestuarant.Utility", "MaizeRestuarant.Utility\MaizeRestuarant.Utility.csproj", "{7F376D12-5BAA-4959-9A00-699D36F7ABB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{75FD72EC-7A0A-4BCA-8C7D-3C12EFF2C532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75FD72EC-7A0A-4BCA-8C7D-3C12EFF2C532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75FD72EC-7A0A-4BCA-8C7D-3C12EFF2C532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4EB2AD-2005-4C68-8711-C691D9631417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4EB2AD-2005-4C68-8711-C691D9631417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4EB2AD-2005-4C68-8711-C691D9631417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4EB2AD-2005-4C68-8711-C691D9631417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B817A689-D941-48BB-8958-E39643D66C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B817A689-D941-48BB-8958-E39643D66C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B817A689-D941-48BB-8958-E39643D66C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B817A689-D941-48BB-8958-E39643D66C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F376D12-5BAA-4959-9A00-699D36F7ABB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F376D12-5BAA-4959-9A00-699D36F7ABB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F376D12-5BAA-4959-9A00-699D36F7ABB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F376D12-5BAA-4959-9A00-699D36F7ABB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

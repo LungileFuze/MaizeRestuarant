@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿
+using MaizeRestuarant.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace MaizeRestuarantWeb.Model
 {

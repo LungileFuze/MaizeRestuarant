@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MaizeRestuarantWeb.Model
+namespace MaizeRestuarant.Models
 {
     public class Category
     {
@@ -9,7 +9,7 @@ namespace MaizeRestuarantWeb.Model
         [Required]
         public string Name { get; set; }
         [Display(Name = "Display Order")]
-        [Range(1, 100, ErrorMessage ="Display Order must be in a range of 1-100")]
+        [Range(1, 100, ErrorMessage = "Display Order must be in a range of 1-100")]
         public int DisplayOrder { get; set; }
     }
 }
