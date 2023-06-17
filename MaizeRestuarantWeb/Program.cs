@@ -1,5 +1,6 @@
 
 using MaizeRestuarant.DataAccess.Data;
+using MaizeRestuarant.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MaizeRestuarantDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<ICategoryRepository, ICategoryRepository>();
 
 var app = builder.Build();
 
