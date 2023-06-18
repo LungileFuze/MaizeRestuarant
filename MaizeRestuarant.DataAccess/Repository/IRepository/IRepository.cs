@@ -11,7 +11,7 @@ namespace MaizeRestuarant.DataAccess.Repository.IRepository
     {
         //Get All, Get by Id First or Default, Add, Remove, RemoveRange
         void Add(T entity);
-        void Delete(T entity);
+        void Remove(T entity);
 
         void RemoveRange(IEnumerable<T> entity);
         IEnumerable<T> GetAll();

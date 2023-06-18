@@ -9,11 +9,11 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
     [BindProperties]
     public class CreateModel : PageModel
     {
-        private readonly ICategoryRepository _contextCategory;
+        private readonly IUnityOfWork _unityOfWork;
         public Category Category { get; set; }
-        public CreateModel(ICategoryRepository contextCategory)
+        public CreateModel(IUnityOfWork unityOfWork)
         {
-            _contextCategory = contextCategory;
+            _unityOfWork = unityOfWork;
         }
         
         public void OnGet()
@@ -29,8 +29,8 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
             }
             if(ModelState.IsValid)
             {
-                _contextCategory.Add(Category);
-                _contextCategory.Save();
+                _unityOfWork.Category.Add(Category);
+                _unityOfWork.Save();
                 TempData["success"] = "Category added successfully";
                 return RedirectToPage("Index");
             }

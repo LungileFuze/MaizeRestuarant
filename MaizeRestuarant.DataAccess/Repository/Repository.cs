@@ -25,7 +25,7 @@ namespace MaizeRestuarant.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public void Delete(T entity)
+        public void Remove(T entity)
         {
             dbSet.Remove(entity);
         }

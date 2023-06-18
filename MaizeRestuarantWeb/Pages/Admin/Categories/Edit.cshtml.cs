@@ -1,4 +1,5 @@
 using MaizeRestuarant.DataAccess.Data;
+using MaizeRestuarant.DataAccess.Repository.IRepository;
 using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,16 +9,16 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
     [BindProperties]
     public class EditModel : PageModel
     {
-        private readonly MaizeRestuarantDbContext _context;
+        private readonly IUnityOfWork _unityOfWork;
         public Category Category { get; set; }
-        public EditModel(MaizeRestuarantDbContext maizeContext)
+        public EditModel(IUnityOfWork unityOfWork)
         {
-            _context = maizeContext;
+            _unityOfWork = unityOfWork;
         }
         
         public void OnGet(int id)
         {
-            Category = _context.Categories.FirstOrDefault(c => c.Id == id);
+            Category = _unityOfWork.Category.GetFirstorDefault(c => c.Id == id);
         }
 
         public async Task<IActionResult> OnPost()
@@ -28,8 +29,8 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
             }
             if (ModelState.IsValid)
             {
-                _context.Update(Category);
-                await _context.SaveChangesAsync();
+                _unityOfWork.Category.Update(Category);
+                _unityOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToPage("Index");
             }

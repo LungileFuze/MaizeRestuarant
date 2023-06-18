@@ -8,17 +8,17 @@ namespace MaizeRestuarantWeb.Pages.Admin.Categories
 {
     public class IndexModel : PageModel
     {
-        private readonly ICategoryRepository _contextCategory;
+        private readonly IUnityOfWork _unityOfWork;
 
-        public IndexModel(ICategoryRepository contextCategory)
+        public IndexModel(IUnityOfWork unityOfWork)
         {
-            _contextCategory = contextCategory;
+            _unityOfWork = unityOfWork;
         }
 
         public IEnumerable<Category> Categories { get; set; }
         public void OnGet()
         {
-            Categories = _contextCategory.GetAll();
+            Categories = _unityOfWork.Category.GetAll();
         }
     }
 }
