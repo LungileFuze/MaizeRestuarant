@@ -1,4 +1,5 @@
 using MaizeRestuarant.DataAccess.Data;
+using MaizeRestuarant.DataAccess.Repository.IRepository;
 using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,17 +8,17 @@ namespace MaizeRestuarantWeb.Pages.Admin.FoodTypes
 {
     public class IndexModel : PageModel
     {
-        private readonly MaizeRestuarantDbContext _context; 
+        private readonly IUnityOfWork _unityOfWork; 
 
-        public IndexModel(MaizeRestuarantDbContext context)
+        public IndexModel(IUnityOfWork unityOfWork)
         {
-            _context = context; 
+            _unityOfWork = unityOfWork; 
         }
 
         public IEnumerable<FoodType> FoodTypes { get; set; }    
         public void OnGet()
         {
-            FoodTypes = _context.FoodType; 
+            FoodTypes = _unityOfWork.FoodType.GetAll(); 
         }
     }
 }

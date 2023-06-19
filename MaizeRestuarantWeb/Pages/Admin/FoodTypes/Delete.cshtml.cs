@@ -1,4 +1,5 @@
 using MaizeRestuarant.DataAccess.Data;
+using MaizeRestuarant.DataAccess.Repository.IRepository;
 using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,25 +9,25 @@ namespace MaizeRestuarantWeb.Pages.Admin.FoodTypes
     [BindProperties]
     public class DeleteModel : PageModel
     {
-        private readonly MaizeRestuarantDbContext _context;
+        private readonly IUnityOfWork _unityOfWork;
         public FoodType FoodType { get; set; }
-        public DeleteModel(MaizeRestuarantDbContext maizeContext)
+        public DeleteModel(IUnityOfWork unityOfWork)
         {
-            _context = maizeContext;
+            _unityOfWork = unityOfWork;
         }
 
         public void OnGet(int id)
         {
-            FoodType = _context.FoodType.FirstOrDefault(c => c.Id == id);
+            FoodType = _unityOfWork.FoodType.GetFirstorDefault(c => c.Id == id);
         }
 
         public async Task<IActionResult> OnPost()
         {
-            var categoryFromDB = _context.FoodType.Find(FoodType.Id);
+            var categoryFromDB = _unityOfWork.FoodType.GetFirstorDefault(f => f.Id == FoodType.Id);
             if (categoryFromDB != null)
             {
-                _context.Remove(categoryFromDB);
-                await _context.SaveChangesAsync();
+                _unityOfWork.FoodType.Remove(categoryFromDB);
+                _unityOfWork.Save();
                 TempData["success"] = "Food type deleted successfully";
                 return RedirectToPage("Index");
             }

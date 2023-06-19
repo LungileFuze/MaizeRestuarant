@@ -1,5 +1,6 @@
 ﻿using MaizeRestuarant.DataAccess.Data;
 using MaizeRestuarant.DataAccess.Repository.IRepository;
+using MaizeRestuarant.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,11 @@ namespace MaizeRestuarant.DataAccess.Repository
         { 
             _context = dbContext;
             Category = new CategoryRepository(dbContext);
+            FoodType = new FoodTypeRepository(dbContext);   
         }
         public ICategoryRepository Category { get; private set; }
+
+        public IFoodTypeRepository FoodType { get; private set; }   
 
         public void Dispose()
         {

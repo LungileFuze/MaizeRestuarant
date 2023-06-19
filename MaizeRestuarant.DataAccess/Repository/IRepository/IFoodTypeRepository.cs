@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaizeRestuarant.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace MaizeRestuarant.DataAccess.Repository.IRepository
 {
-    public interface IUnityOfWork : IDisposable
+    public interface IFoodTypeRepository : IRepository<FoodType>
     {
-        ICategoryRepository Category{ get; }
-
-        IFoodTypeRepository FoodType { get; }
-
-        void Save();
+        void Update(FoodType foodType); 
     }
 }
