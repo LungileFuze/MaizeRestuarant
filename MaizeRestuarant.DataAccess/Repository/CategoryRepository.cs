@@ -1,11 +1,7 @@
 ﻿using MaizeRestuarant.DataAccess.Data;
 using MaizeRestuarant.DataAccess.Repository.IRepository;
 using MaizeRestuarant.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MaizeRestuarant.DataAccess.Repository
 {
