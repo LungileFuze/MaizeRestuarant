@@ -18,7 +18,6 @@ namespace MaizeRestuarant.Models
         public string Image { get; set; }
         [Range(1,1000, ErrorMessage = "Price should be between R1 and R1000")]
         [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18, 2)")]
         public double Price { get; set; }
         [DisplayName("Food Type")]  
         public int FoodTypeId { get; set; }
