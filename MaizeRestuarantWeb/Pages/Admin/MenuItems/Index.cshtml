@@ -18,13 +18,15 @@
 
     <br /><br />
 
-    <table class="table table-bordered table-striped" style="width:100%">
+        <table id="load_MenuItem" class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Category</th>
                 <th>Food Type</th>
+                <th></th>
+                @*<th></th>*@
             </tr>
         </thead>
     </table>
@@ -32,7 +34,5 @@
 </form>
 
 @section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
-     } 
+     <script src="~/js/menuItem.js"></script>
 }

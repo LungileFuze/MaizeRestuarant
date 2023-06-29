@@ -16,7 +16,7 @@ namespace MaizeRestuarantWeb.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var menuItemList = _unityOfWork.MenuItem.GetAll();
+            var menuItemList = _unityOfWork.MenuItem.GetAll(includeProperties: "Category,FoodType");
             return Json(new {data= menuItemList});
         }
     }

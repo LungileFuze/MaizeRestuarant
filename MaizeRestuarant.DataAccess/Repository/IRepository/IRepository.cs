@@ -14,7 +14,7 @@ namespace MaizeRestuarant.DataAccess.Repository.IRepository
         void Remove(T entity);
 
         void RemoveRange(IEnumerable<T> entity);
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperties=null);
         T GetFirstorDefault(Expression<Func<T, bool>>? filter = null);
     }
 }
