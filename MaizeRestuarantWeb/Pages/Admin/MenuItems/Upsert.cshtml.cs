@@ -3,7 +3,7 @@ using MaizeRestuarant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using static System.Net.WebRequestMethods;
+
 
 namespace MaizeRestuarantWeb.Pages.Admin.MenuItems
 {
@@ -25,8 +25,13 @@ namespace MaizeRestuarantWeb.Pages.Admin.MenuItems
             _webEnvironment = webEnvironment;
             MenuItem = new(); 
         }
-        public void OnGet()
+        public void OnGet(int? id)
         {
+            if(id != null)
+            {
+                MenuItem = _unityOfWork.MenuItem.GetFirstorDefault(m => m.Id == id);    
+            }
+
             CategoryList = _unityOfWork.Category.GetAll().Select(c => new SelectListItem 
             { 
                 Text = c.Name,
@@ -60,7 +65,33 @@ namespace MaizeRestuarantWeb.Pages.Admin.MenuItems
             }
             else
             {
-                
+                //Update
+                var objFromDb = _unityOfWork.MenuItem.GetFirstorDefault(m => m.Id == MenuItem.Id);
+                if(files.Count != 0) 
+                {
+                    string fileName_new = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\menuItems");
+                    var extension = Path.GetExtension(files[0].FileName);
+
+                    //delete old image
+                    var oldImage = Path.Combine(webRootPath, objFromDb.Image.TrimStart('\\')); 
+                    if(System.IO.File.Exists(oldImage))
+                    {
+                        System.IO.File.Delete(oldImage);
+                    }
+
+                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName_new + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStream);
+                    }
+                    MenuItem.Image = @"\images\menuItems\" + fileName_new + extension;
+                }
+                else
+                {
+                    MenuItem.Image = objFromDb.Image;
+                }
+                _unityOfWork.MenuItem.Update(MenuItem);
+                _unityOfWork.Save();
             }
             return RedirectToPage("./Index");
         }
