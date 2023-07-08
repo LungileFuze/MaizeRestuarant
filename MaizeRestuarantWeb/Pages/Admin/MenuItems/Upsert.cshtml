@@ -59,7 +59,14 @@
                 }
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px; height:50px">@(Model.MenuItem.Id != 0 ? "Update" : "Create")</button>
+        @if(Model.MenuItem.Id != 0)
+        {
+            <button type="submit" class="btn btn-primary" style="width:150px; height:50px;">Update</button>
+        }
+        else
+        {
+            <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px; height:50px;">Create</button>
+        }
         <a asp-page="Index" class="btn btn-outline-secondary" style="width:170px; height:50px">Back To List</a>
     </div>
 </form>
@@ -71,6 +78,16 @@
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
+
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an Image!',
+                })
+            }
+        }
     </script>
     @{
         <partial name="_ValidationScriptsPartial" />
